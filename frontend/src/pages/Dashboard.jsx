@@ -118,7 +118,7 @@ export default function Dashboard() {
       title: 'Monthly Change',
       value: monthlyChange != null ? `${monthlyChange > 0 ? '+' : ''}${monthlyChange}%` : 'N/A',
       icon: monthlyChange != null && monthlyChange >= 0 ? TrendingUp : TrendingDown,
-      gradient: dark 
+      gradient: dark
         ? (monthlyChange != null && monthlyChange > 0 ? 'from-rose-500/20 to-red-500/20' : 'from-emerald-500/20 to-teal-500/20')
         : (monthlyChange != null && monthlyChange > 0 ? 'from-rose-50 to-red-50' : 'from-emerald-50 to-teal-50'),
       iconColor: monthlyChange != null && monthlyChange > 0 ? 'text-rose-500' : 'text-emerald-500',
@@ -135,9 +135,8 @@ export default function Dashboard() {
   const ChartTooltip = ({ active, payload, label }) => {
     if (!active || !payload?.length) return null;
     return (
-      <div className={`px-4 py-3 rounded-xl shadow-[0_0_15px_rgba(99,102,241,0.2)] border backdrop-blur-md text-sm ${
-        dark ? 'bg-slate-900/90 border-slate-700 text-slate-100' : 'bg-white/90 border-slate-200 text-slate-900'
-      }`}>
+      <div className={`px-4 py-3 rounded-xl shadow-[0_0_15px_rgba(99,102,241,0.2)] border backdrop-blur-md text-sm ${dark ? 'bg-slate-900/90 border-slate-700 text-slate-100' : 'bg-white/90 border-slate-200 text-slate-900'
+        }`}>
         <p className="font-semibold">{label}</p>
         <p className="text-primary-500 font-bold glow-effect">₹{payload[0].value.toLocaleString('en-IN')}</p>
       </div>
@@ -154,7 +153,7 @@ export default function Dashboard() {
       </div>
 
       {/* Header */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -172,7 +171,7 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Summary Cards */}
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -182,7 +181,7 @@ export default function Dashboard() {
           <motion.div key={card.title} variants={itemVariants} className="glow-effect group">
             <div className={`h-full glass-card p-6 flex flex-col justify-between overflow-hidden relative backdrop-blur-xl ${dark ? 'bg-slate-900/60' : 'bg-white/80'}`}>
               <div className={`absolute -right-6 -top-6 w-24 h-24 bg-gradient-to-br ${card.gradient} rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500`} />
-              
+
               <div className="flex items-start justify-between mb-4 relative z-10">
                 <p className={`text-xs font-bold uppercase tracking-widest ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
                   {card.title}
@@ -200,7 +199,7 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Charts Row */}
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -234,7 +233,7 @@ export default function Dashboard() {
                       tick={{ fill: dark ? '#94a3b8' : '#64748b', fontSize: 12 }}
                       axisLine={false}
                       tickLine={false}
-                      tickFormatter={(val) => `₹${val/1000}k`}
+                      tickFormatter={(val) => `₹${val / 1000}k`}
                     />
                     <Tooltip content={<ChartTooltip />} />
                     <Area
@@ -321,7 +320,7 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Recent Transactions */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -333,7 +332,7 @@ export default function Dashboard() {
               <CreditCard className="text-purple-500 w-5 h-5" /> Recent Transactions
             </h3>
           </div>
-          
+
           {recentExpenses.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -357,9 +356,8 @@ export default function Dashboard() {
                       <td className="py-4 px-2 font-medium">{exp.description || '—'}</td>
                       <td className="py-4 px-2">
                         <span
-                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 group-hover:scale-105 ${
-                            dark ? 'bg-slate-800 text-slate-200 shadow-[0_0_10px_rgba(255,255,255,0.05)]' : 'bg-slate-100 text-slate-700 shadow-sm'
-                          }`}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 group-hover:scale-105 ${dark ? 'bg-slate-800 text-slate-200 shadow-[0_0_10px_rgba(255,255,255,0.05)]' : 'bg-slate-100 text-slate-700 shadow-sm'
+                            }`}
                         >
                           {CATEGORY_ICONS[exp.category] || '📦'} {exp.category}
                         </span>
